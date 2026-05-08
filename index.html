@@ -1,0 +1,808 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alejandro Hortal, PhD — Political Philosophy & Behavioral Public Policy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#16161d;--ink-soft:#4a4a5a;--cream:#f5f2ec;--warm:#ece8e0;--panel:#1e1e2e;--accent:#7a4f2e;--accent2:#3b6b5a;--gold:#c9a84c;--rule:#d8d2c6;--serif:'Cormorant Garamond',Georgia,serif;--sans:'DM Sans',sans-serif}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--cream);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.7}
+::-webkit-scrollbar{width:4px}::-webkit-scrollbar-track{background:var(--cream)}::-webkit-scrollbar-thumb{background:var(--accent);border-radius:2px}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(245,242,236,.93);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;height:54px;padding:0 32px}
+.nav-logo{font-family:var(--serif);font-size:1.1rem;color:var(--ink);text-decoration:none;letter-spacing:.03em}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{text-decoration:none;color:var(--ink-soft);font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:var(--accent)}
+.nav-toggle{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.nav-toggle span{width:22px;height:1.5px;background:var(--ink);display:block}
+
+#hero{min-height:100vh;display:grid;grid-template-columns:1fr 400px;padding-top:54px}
+.hero-left{padding:70px 60px 60px 60px;display:flex;flex-direction:column;justify-content:center;max-width:680px}
+.hero-eyebrow{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:22px;display:flex;align-items:center;gap:10px}
+.hero-eyebrow::before{content:'';display:block;width:32px;height:1px;background:var(--accent)}
+h1{font-family:var(--serif);font-size:clamp(2.8rem,5vw,4.2rem);line-height:1.05;font-weight:300;margin-bottom:6px}
+h1 strong{font-weight:600}
+.hero-sub{font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--ink-soft);margin-bottom:28px}
+.hero-bio{font-size:.92rem;color:var(--ink-soft);line-height:1.8;margin-bottom:30px;max-width:520px}
+.hero-positions{border-left:2px solid var(--gold);padding-left:18px;margin-bottom:34px}
+.hero-positions p{font-size:.82rem;line-height:1.9;color:var(--ink-soft)}
+.hero-positions strong{color:var(--ink);font-weight:500}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn{text-decoration:none;padding:11px 24px;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;border-radius:1px;transition:all .25s;font-family:var(--sans)}
+.btn-dark{background:var(--ink);color:var(--cream)}.btn-dark:hover{background:var(--accent)}
+.btn-ghost{border:1px solid var(--ink);color:var(--ink)}.btn-ghost:hover{background:var(--ink);color:var(--cream)}
+
+.hero-right{background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 36px;position:relative;overflow:hidden}
+.hero-right::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 20%,rgba(122,79,46,.35) 0%,transparent 55%),radial-gradient(ellipse at 80% 80%,rgba(59,107,90,.3) 0%,transparent 55%)}
+.geo-bg-abs{position:absolute;inset:0;opacity:.07}
+.hero-right-inner{position:relative;z-index:1;width:100%;display:flex;flex-direction:column;align-items:center;gap:28px}
+.photo-frame{width:164px;height:164px;border-radius:50%;overflow:hidden;border:2px solid rgba(201,168,76,.4);flex-shrink:0}
+.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top}
+.photo-placeholder{width:100%;height:100%;background:linear-gradient(135deg,rgba(122,79,46,.4),rgba(59,107,90,.3));display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:3rem;color:rgba(255,255,255,.45)}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;width:100%}
+.stat-box{text-align:center;padding:14px 8px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.03)}
+.stat-number{font-family:var(--serif);font-size:1.8rem;color:var(--gold);line-height:1;margin-bottom:4px}
+.stat-label{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.38)}
+.kw-cloud{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}
+.kw{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;padding:4px 11px;border:1px solid rgba(255,255,255,.14);color:rgba(255,255,255,.5);border-radius:1px}
+
+.sw{max-width:1100px;margin:0 auto;padding:80px 32px}
+.sw-dark{background:var(--panel);color:white;padding:80px 32px}
+.sw-dark .sw-i{max-width:1100px;margin:0 auto}
+.sw-warm{background:var(--warm);padding:80px 32px}
+.sw-warm .sw-i{max-width:1100px;margin:0 auto}
+.sl{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);font-weight:500;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.sl::before{content:'';display:block;width:22px;height:1px;background:var(--accent)}
+.sw-dark .sl{color:var(--gold)}.sw-dark .sl::before{background:var(--gold)}
+h2{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.5rem);font-weight:300;line-height:1.15;margin-bottom:36px}
+h2 em{font-style:italic;color:var(--ink-soft)}
+.sw-dark h2{color:white}.sw-dark h2 em{color:rgba(255,255,255,.45)}
+.divider{border:none;border-top:1px solid var(--rule);max-width:1100px;margin:0 auto}
+
+.about-grid{display:grid;grid-template-columns:1fr 290px;gap:60px;align-items:start}
+.about-text p{margin-bottom:14px;color:var(--ink-soft);font-size:.92rem;line-height:1.8}
+.about-text p:first-child{color:var(--ink);font-size:.97rem}
+.info-card{background:white;padding:26px;border-top:3px solid var(--accent)}
+.ib{margin-bottom:18px;padding-bottom:18px;border-bottom:1px solid var(--rule)}
+.ib:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.ib h4{font-size:.62rem;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-soft);font-weight:500;margin-bottom:6px}
+.ib p,.ib a{font-size:.83rem;color:var(--ink-soft);line-height:1.6;text-decoration:none;display:block}
+.ib a:hover{color:var(--accent)}
+
+.rg{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.rc{background:white;padding:28px;border-top:3px solid var(--accent2);transition:transform .25s,box-shadow .25s}
+.rc:hover{transform:translateY(-3px);box-shadow:0 10px 36px rgba(0,0,0,.07)}
+.rc-icon{margin-bottom:14px}
+.rc h3{font-family:var(--serif);font-size:1.03rem;font-weight:400;margin-bottom:8px;line-height:1.35}
+.rc p{font-size:.81rem;color:var(--ink-soft);line-height:1.65}
+
+.pub-tabs{display:flex;gap:0;margin-bottom:36px;border-bottom:1px solid var(--rule)}
+.pt{padding:9px 20px;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500;cursor:pointer;color:var(--ink-soft);border-bottom:2px solid transparent;transition:all .2s;margin-bottom:-1px}
+.pt.active{color:var(--accent);border-bottom-color:var(--accent)}
+.pp{display:none}.pp.active{display:block}
+.pl{list-style:none}
+.pi{display:grid;grid-template-columns:70px 1fr;gap:16px;padding:20px 0;border-bottom:1px solid var(--rule);align-items:start}
+.pi:first-child{border-top:1px solid var(--rule)}
+.py{font-size:.72rem;font-weight:500;color:var(--accent);letter-spacing:.04em;padding-top:3px;font-family:var(--serif)}
+.pb h4{font-family:var(--serif);font-size:.98rem;font-weight:400;line-height:1.35;margin-bottom:3px}
+.pb .venue{font-size:.79rem;color:var(--ink-soft);font-style:italic;margin-bottom:2px}
+.pb .plinks{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.plink{font-size:.67rem;letter-spacing:.07em;text-transform:uppercase;color:var(--accent);text-decoration:none;font-weight:500;border-bottom:1px solid transparent;transition:border-color .2s}
+.plink:hover{border-bottom-color:var(--accent)}
+.badge{display:inline-block;font-size:.61rem;letter-spacing:.07em;text-transform:uppercase;padding:3px 8px;background:var(--accent);color:white;margin-top:4px;font-weight:500}
+.bg{background:var(--accent2)}.bb{background:#4a6fa5}.bgold{background:var(--gold)}
+
+.tl{display:grid;grid-template-columns:1fr 1fr;gap:44px}
+.tg h3{font-family:var(--serif);font-size:1.05rem;font-weight:400;margin-bottom:18px;padding-bottom:9px;border-bottom:2px solid var(--gold);color:white}
+.ti{padding:12px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+.ti:last-child{border-bottom:none}
+.td{font-size:.67rem;letter-spacing:.05em;color:var(--gold);font-weight:500;margin-bottom:2px}
+.tt{font-size:.86rem;color:rgba(255,255,255,.82);line-height:1.45;margin-bottom:2px}
+.tv{font-size:.75rem;color:rgba(255,255,255,.42);font-style:italic}
+
+.teach-inst{margin-bottom:40px}
+.teach-inst h3{font-family:var(--serif);font-size:1.15rem;font-weight:400;margin-bottom:3px}
+.teach-inst .isub{font-size:.77rem;color:var(--ink-soft);margin-bottom:16px;letter-spacing:.04em}
+.cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:10px}
+.cp{background:white;padding:11px 15px;font-size:.82rem;color:var(--ink-soft);border-left:3px solid var(--accent2);line-height:1.4}
+
+.sg{display:grid;grid-template-columns:1fr 1fr 1fr;gap:28px}
+.sb h3{font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:12px;color:white;padding-bottom:7px;border-bottom:1px solid rgba(255,255,255,.09)}
+.si{font-size:.82rem;color:rgba(255,255,255,.58);padding:6px 0;border-bottom:1px solid rgba(255,255,255,.04);line-height:1.4}
+.si:last-child{border-bottom:none}
+.si strong{color:rgba(255,255,255,.82);font-weight:400}
+
+.aw-row{display:flex;gap:20px;flex-wrap:wrap}
+.aw-card{background:white;padding:26px;border-top:3px solid var(--gold);flex:1;min-width:200px}
+.aw-card h4{font-family:var(--serif);font-size:.98rem;font-weight:400;margin-bottom:6px;line-height:1.3}
+.aw-card p{font-size:.79rem;color:var(--ink-soft)}
+
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start}
+.contact-intro p{font-size:.92rem;color:var(--ink-soft);line-height:1.8;margin-bottom:18px}
+.cl{list-style:none}
+.cl li{display:flex;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--rule)}
+.clabel{font-size:.62rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-soft);width:78px;flex-shrink:0;font-weight:500}
+.cl a{color:var(--ink);text-decoration:none;font-size:.87rem;transition:color .2s}
+.cl a:hover{color:var(--accent)}
+
+footer{background:#0e0e1a;text-align:center;padding:20px 16px;font-size:.71rem;color:rgba(255,255,255,.2);letter-spacing:.05em}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+.hero-left>*{animation:fadeUp .6s ease both}
+.hero-left>*:nth-child(1){animation-delay:.05s}.hero-left>*:nth-child(2){animation-delay:.13s}
+.hero-left>*:nth-child(3){animation-delay:.2s}.hero-left>*:nth-child(4){animation-delay:.28s}
+.hero-left>*:nth-child(5){animation-delay:.36s}.hero-left>*:nth-child(6){animation-delay:.43s}
+
+@media(max-width:960px){
+  #hero{grid-template-columns:1fr}.hero-right{display:none}.hero-left{padding:60px 24px}
+  .about-grid{grid-template-columns:1fr}.rg{grid-template-columns:1fr 1fr}
+  .tl{grid-template-columns:1fr}.sg{grid-template-columns:1fr 1fr}.contact-grid{grid-template-columns:1fr}
+  .nav-links{display:none;position:absolute;top:54px;left:0;right:0;background:var(--cream);flex-direction:column;padding:14px 28px 20px;gap:12px;border-bottom:1px solid var(--rule);box-shadow:0 8px 20px rgba(0,0,0,.06)}
+  .nav-links.open{display:flex}.nav-toggle{display:flex}
+}
+@media(max-width:580px){.rg{grid-template-columns:1fr}.sg{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Alejandro Hortal, PhD</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#research">Research</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#teaching">Teaching</a></li>
+      <li><a href="#service">Service</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="nav-toggle" onclick="document.getElementById('navLinks').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Political Philosophy &amp; Behavioral Public Policy</p>
+    <h1><strong>Alejandro</strong><br>Hortal</h1>
+    <p class="hero-sub">PhD in Philosophy · UNED, Madrid</p>
+    <p class="hero-bio">I work at the intersection of political philosophy, philosophy of science, and behavioral economics, examining how institutions and technologies shape citizens' capacity for judgment, autonomy, and meaningful democratic participation. My research builds a phronetic alternative to the dominant bias-correction paradigm in behavioral public policy.</p>
+    <div class="hero-positions">
+      <p>
+        <strong>Senior Lecturer</strong> — Languages, Literatures &amp; Cultures, UNC Greensboro (2008–present)<br>
+        <strong>Visiting Assistant Professor of Philosophy</strong> — Wake Forest University (2021–present)<br>
+        <strong>Faculty &amp; Coordinator, BPP Track</strong> — Univ. of New York in Prague (2019–present)<br>
+        <strong>Advisory Board</strong> — International Behavioral Public Policy Association
+      </p>
+    </div>
+    <div class="hero-ctas">
+      <a href="#publications" class="btn btn-dark">Publications</a>
+      <a href="#talks" class="btn btn-ghost">Talks &amp; Keynotes</a>
+      <a href="mailto:alexhortal@gmail.com" class="btn btn-ghost">Contact</a>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <svg class="geo-bg-abs" viewBox="0 0 400 700" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+      <defs><pattern id="g" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0L0 0 0 36" fill="none" stroke="white" stroke-width=".4"/></pattern></defs>
+      <rect width="100%" height="100%" fill="url(#g)"/>
+      <circle cx="200" cy="280" r="130" fill="none" stroke="white" stroke-width=".7"/>
+      <circle cx="200" cy="280" r="90" fill="none" stroke="white" stroke-width=".4"/>
+      <polygon points="200,150 310,320 90,320" fill="none" stroke="white" stroke-width=".6"/>
+    </svg>
+    <div class="hero-right-inner">
+      <!-- TO ADD PHOTO: replace the div.photo-placeholder with <img src="your-photo.jpg" alt="Alejandro Hortal"> inside .photo-frame -->
+      <div class="photo-frame"><div class="photo-placeholder">AH</div></div>
+      <div class="hero-stats">
+        <div class="stat-box"><div class="stat-number">13+</div><div class="stat-label">Publications</div></div>
+        <div class="stat-box"><div class="stat-number">18+</div><div class="stat-label">Yrs Teaching</div></div>
+        <div class="stat-box"><div class="stat-number">3</div><div class="stat-label">Keynotes</div></div>
+        <div class="stat-box"><div class="stat-number">204</div><div class="stat-label">Altmetric</div></div>
+      </div>
+      <div class="kw-cloud">
+        <span class="kw">Phronesis</span><span class="kw">Nudge Theory</span>
+        <span class="kw">Bounded Rationality</span><span class="kw">Herbert Simon</span>
+        <span class="kw">Choice Architecture</span><span class="kw">Virtue Ethics</span>
+        <span class="kw">Democratic Theory</span><span class="kw">BPP</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ABOUT -->
+<div class="sw" id="about">
+  <p class="sl">About</p>
+  <h2>Scholarship at the intersection of <em>ethics, rationality &amp; governance</em></h2>
+  <div class="about-grid">
+    <div class="about-text">
+      <p>My research focuses on the philosophical foundations of government and public policy, examining how human rationality, moral agency, and responsibility are shaped by institutions, technologies, and cultural contexts. Working at the intersection of political philosophy, philosophy of science, and the behavioral and social sciences, I explore how contemporary governance influences citizens' capacity for judgment, autonomy, and meaningful participation in democratic public life.</p>
+      <p>A central strand of my work analyzes bounded and ecological rationality, drawing on the legacy of Herbert Simon. Concepts such as heuristics, biases, nudges, and choice architecture function in my research not merely as technical policy tools, but as philosophical lenses through which to assess the ethical limits of political influence and the conditions under which public policies can support responsible agency rather than passive compliance.</p>
+      <p>My research addresses substantive political challenges — public health governance, gender-based violence, corruption, and sustainability — while critically examining the epistemological assumptions behind policy design. Drawing on Aristotelian virtue ethics, I argue that effective governance must attend not only to outcomes and compliance, but to the cultivation of stable dispositions that support responsible agency and democratic participation.</p>
+      <p>I hold dual US-Spanish citizenship and maintain active research collaborations across Europe, Mexico, and Colombia. I serve as Guest Editor of a <em>Behavioural Public Policy</em> special issue, Advisory Board member of the IBPPA, and Board Director of the Scientific Association of Behavioral Economics (Spain &amp; Latin America).</p>
+    </div>
+    <div>
+      <div class="info-card">
+        <div class="ib">
+          <h4>Education</h4>
+          <p><strong>PhD in Philosophy</strong> — UNED, Madrid<br>"Herbert Simon's Heritage: Nudge Theory and Ecological Rationality"<br>Advisor: Francisco Álvarez Álvarez</p>
+          <p style="margin-top:7px"><strong>BA &amp; MA in Philosophy</strong> — Complutense University of Madrid</p>
+        </div>
+        <div class="ib">
+          <h4>ORCID</h4>
+          <a href="https://orcid.org/0000-0001-6255-4488" target="_blank">0000-0001-6255-4488 →</a>
+        </div>
+        <div class="ib">
+          <h4>Email</h4>
+          <a href="mailto:alexhortal@gmail.com">alexhortal@gmail.com →</a>
+        </div>
+        <div class="ib">
+          <h4>ANECA Accreditation</h4>
+          <p>PEP F.1 &amp; F.4 · Código 585 · Comité 5</p>
+        </div>
+        <div class="ib">
+          <h4>Languages</h4>
+          <p>Spanish (native) · English (native) · French (reading)</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- RESEARCH -->
+<div class="sw-warm" id="research">
+  <div class="sw-i">
+    <p class="sl">Research Agenda</p>
+    <h2>Current Projects &amp; <em>Research Interests</em></h2>
+
+    <svg viewBox="0 0 900 60" xmlns="http://www.w3.org/2000/svg" style="width:100%;margin-bottom:44px;display:block">
+      <defs>
+        <linearGradient id="gA" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#7a4f2e" stop-opacity=".1"/>
+          <stop offset="50%" stop-color="#3b6b5a" stop-opacity=".2"/>
+          <stop offset="100%" stop-color="#7a4f2e" stop-opacity=".1"/>
+        </linearGradient>
+      </defs>
+      <rect width="900" height="60" fill="url(#gA)" rx="2"/>
+      <circle cx="112" cy="30" r="22" fill="none" stroke="#7a4f2e" stroke-width="1"/>
+      <text x="112" y="27" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="#7a4f2e">Aristotelian</text>
+      <text x="112" y="37" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="#7a4f2e">Phronesis</text>
+      <line x1="134" y1="30" x2="210" y2="30" stroke="#7a4f2e" stroke-width=".7" stroke-dasharray="3,3"/>
+      <circle cx="232" cy="30" r="22" fill="none" stroke="#3b6b5a" stroke-width="1"/>
+      <text x="232" y="27" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="#3b6b5a">Bounded</text>
+      <text x="232" y="37" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="#3b6b5a">Rationality</text>
+      <line x1="254" y1="30" x2="330" y2="30" stroke="#3b6b5a" stroke-width=".7" stroke-dasharray="3,3"/>
+      <circle cx="352" cy="30" r="22" fill="none" stroke="#c9a84c" stroke-width="1"/>
+      <text x="352" y="27" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="#c9a84c">Behavioral</text>
+      <text x="352" y="37" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="#c9a84c">Public Policy</text>
+      <line x1="374" y1="30" x2="450" y2="30" stroke="#c9a84c" stroke-width=".7" stroke-dasharray="3,3"/>
+      <circle cx="472" cy="30" r="22" fill="none" stroke="#4a6fa5" stroke-width="1"/>
+      <text x="472" y="27" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="#4a6fa5">Democratic</text>
+      <text x="472" y="37" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="#4a6fa5">Governance</text>
+      <line x1="494" y1="30" x2="570" y2="30" stroke="#4a6fa5" stroke-width=".7" stroke-dasharray="3,3"/>
+      <circle cx="592" cy="30" r="22" fill="none" stroke="#7a4f2e" stroke-width="1"/>
+      <text x="592" y="27" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="#7a4f2e">Virtue</text>
+      <text x="592" y="37" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="#7a4f2e">Ethics</text>
+      <line x1="614" y1="30" x2="690" y2="30" stroke="#7a4f2e" stroke-width=".7" stroke-dasharray="3,3"/>
+      <circle cx="712" cy="30" r="22" fill="none" stroke="#3b6b5a" stroke-width="1"/>
+      <text x="712" y="27" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="#3b6b5a">Herbert</text>
+      <text x="712" y="37" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="#3b6b5a">Simon</text>
+      <line x1="734" y1="30" x2="810" y2="30" stroke="#3b6b5a" stroke-width=".7" stroke-dasharray="3,3"/>
+      <circle cx="832" cy="30" r="22" fill="none" stroke="#c9a84c" stroke-width="1"/>
+      <text x="832" y="27" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="#c9a84c">Phil. of</text>
+      <text x="832" y="37" text-anchor="middle" font-family="Cormorant Garamond,serif" font-size="7.5" fill="#c9a84c">Science</text>
+    </svg>
+
+    <div class="rg">
+      <div class="rc">
+        <div class="rc-icon"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="17" cy="17" r="16" stroke="#3b6b5a" stroke-width="1.1"/><circle cx="17" cy="17" r="9" fill="rgba(59,107,90,.12)" stroke="#3b6b5a" stroke-width=".7"/><line x1="17" y1="1" x2="17" y2="33" stroke="#3b6b5a" stroke-width=".5"/><line x1="1" y1="17" x2="33" y2="17" stroke="#3b6b5a" stroke-width=".5"/></svg></div>
+        <h3>Phronetic Framework for Behavioral Public Policy</h3>
+        <p>Developing bounded phronesis and the p-perspective as normative criteria for evaluating behavioral interventions. Introduces multi-rationality (six forms) as an alternative to Kahneman's dual-system model. Integrates Aristotelian virtue ethics with contemporary behavioral science.</p>
+      </div>
+      <div class="rc">
+        <div class="rc-icon"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><rect x="2" y="2" width="30" height="30" stroke="#3b6b5a" stroke-width="1.1"/><rect x="8" y="8" width="18" height="18" stroke="#3b6b5a" stroke-width=".7"/><rect x="13" y="13" width="8" height="8" fill="rgba(59,107,90,.25)" stroke="#3b6b5a" stroke-width=".5"/></svg></div>
+        <h3>Ethics &amp; Epistemology of Nudge Theory</h3>
+        <p>Critical examination of the conceptual and normative foundations of nudge-based behavioral interventions, including the limits of evidence-based policymaking, RCTs across diverse cultural settings, and the risks of epistemic dilution under nudge saturation.</p>
+      </div>
+      <div class="rc">
+        <div class="rc-icon"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><polygon points="17,3 31,27 3,27" stroke="#3b6b5a" stroke-width="1.1" fill="rgba(59,107,90,.07)"/><polygon points="17,11 25,25 9,25" stroke="#3b6b5a" stroke-width=".6" fill="rgba(59,107,90,.1)"/></svg></div>
+        <h3>Behavioral Approaches to Corruption &amp; Gender Violence</h3>
+        <p>Normative and empirical analysis of how choice architecture and virtue nudges can address systemic social problems including corruption in Latin America and gender-based violence, while respecting autonomy and dignity. 🏆 Best Research Project Prize, SCEC (2024).</p>
+      </div>
+      <div class="rc">
+        <div class="rc-icon"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><circle cx="9" cy="17" r="6" stroke="#3b6b5a" stroke-width="1"/><circle cx="25" cy="9" r="6" stroke="#3b6b5a" stroke-width="1"/><circle cx="25" cy="25" r="6" stroke="#3b6b5a" stroke-width="1"/><line x1="15" y1="15" x2="19" y2="12" stroke="#3b6b5a" stroke-width=".8"/><line x1="15" y1="19" x2="19" y2="22" stroke="#3b6b5a" stroke-width=".8"/></svg></div>
+        <h3>Bounded Rationality &amp; Herbert Simon's Legacy</h3>
+        <p>Tracing the genealogy of bounded rationality from Simon through ecological rationality (Gigerenzer) to contemporary BPP, examining the philosophical implications of heuristics, satisficing, and procedural rationality for political theory and democratic governance.</p>
+      </div>
+      <div class="rc">
+        <div class="rc-icon"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><path d="M5 29 L5 9 L17 5 L29 9 L29 29 Z" stroke="#3b6b5a" stroke-width="1.1" fill="rgba(59,107,90,.06)"/><line x1="5" y1="21" x2="29" y2="21" stroke="#3b6b5a" stroke-width=".6"/><circle cx="17" cy="14" r="4" fill="rgba(59,107,90,.18)" stroke="#3b6b5a" stroke-width=".6"/></svg></div>
+        <h3>Deaths of Despair &amp; Hopelessness</h3>
+        <p>Examining how structural hopelessness drives deaths of despair and how behavioral interventions can help while respecting autonomy. Joint work with Dr. Jack Kwong (Appalachian State). Under review at <em>Journal of Social Philosophy</em> and <em>Public Health Ethics</em>.</p>
+      </div>
+      <div class="rc">
+        <div class="rc-icon"><svg width="34" height="34" viewBox="0 0 34 34" fill="none"><rect x="2" y="14" width="9" height="18" stroke="#3b6b5a" stroke-width="1"/><rect x="13" y="8" width="9" height="24" stroke="#3b6b5a" stroke-width="1"/><rect x="24" y="3" width="9" height="29" stroke="#3b6b5a" stroke-width="1"/><line x1="2" y1="32" x2="33" y2="32" stroke="#3b6b5a" stroke-width=".7"/></svg></div>
+        <h3>Virtue Nudges &amp; Civic Character Formation</h3>
+        <p>Investigating how choice architecture can be designed to cultivate civic virtues and practical wisdom, not merely compliant behavior. Connects to extended cognition, digital environments, and sustainability policy. Collaboration with Dr. Stefano Calboli (Sant'Anna).</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- PUBLICATIONS -->
+<div class="sw" id="publications">
+  <p class="sl">Publications</p>
+  <h2>Peer-Reviewed Work &amp; <em>Scholarly Contributions</em></h2>
+
+  <div class="pub-tabs">
+    <div class="pt active" onclick="switchTab('articles',this)">Journal Articles</div>
+    <div class="pt" onclick="switchTab('chapters',this)">Book Chapters</div>
+    <div class="pt" onclick="switchTab('other',this)">Other</div>
+    <div class="pt" onclick="switchTab('review',this)">Under Review</div>
+  </div>
+
+  <div class="pp active" id="tab-articles">
+    <ul class="pl">
+      <li class="pi">
+        <span class="py">2026</span>
+        <div class="pb">
+          <h4>Conceptual Dilution in Behavioral Public Policy: Ethics, Epistemological Semantics, and the Need for Rigor in an Age of Nudge Saturation</h4>
+          <p class="venue"><em>Policy and Society</em>, Oxford University Press</p>
+          <span class="badge bb">In Press</span>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">2025</span>
+        <div class="pb">
+          <h4>Rationality Wars: Epistemological Boundaries and the Limits of Reductionism</h4>
+          <p class="venue"><em>Behavioural Public Policy</em>, Political Economy Section, 1–17. Cambridge University Press</p>
+          <span class="badge bgold">Altmetric 204 · Top 5% · #10 of 330 articles in BPP history</span>
+          <div class="plinks"><a href="https://doi.org/10.1017/bpp.2025.10027" target="_blank" class="plink">DOI →</a></div>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">2024</span>
+        <div class="pb">
+          <h4>Behavioral Strategies for Reducing Corruption: From Regulation to Choice Architecture (with Armenio Pérez Martínez)</h4>
+          <p class="venue"><em>Behavioural Public Policy</em>, 1–18. Cambridge University Press</p>
+          <span class="badge bgold">🏆 Best Research Project — Scientific Society of Behavioral Economics</span>
+          <div class="plinks"><a href="https://doi.org/10.1017/bpp.2024.48" target="_blank" class="plink">DOI →</a></div>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">2024</span>
+        <div class="pb">
+          <h4>Thriving by Design: Can Behavioral Economics and Public Policy Shape Virtuous Lives?</h4>
+          <p class="venue"><em>Behanomics</em>, 2</p>
+          <div class="plinks"><a href="https://behanomics.com/bej/article/view/15" target="_blank" class="plink">Full Text →</a></div>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">2024</span>
+        <div class="pb">
+          <h4>Recent Developments in Behavioural Public Policy: IBPPC 2022 (with Sanchayan Banerjee, Laura Zimmermann, Malte Dold, Andriy Ivchenko, Leonhard Lades, Rebecca McDonald &amp; Manu M. Savani)</h4>
+          <p class="venue"><em>Behavioural Public Policy</em>, 8(4), 633–638. Cambridge University Press</p>
+          <div class="plinks"><a href="https://doi.org/10.1017/bpp.2024.12" target="_blank" class="plink">DOI →</a></div>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">2023</span>
+        <div class="pb">
+          <h4>Behavioral Public Policy and Well-Being: Towards a Normative Demarcation of Nudges and Sludges (with Luis Enrique Segoviano Contreras)</h4>
+          <p class="venue"><em>Review of Behavioral Economics</em>, 10(2), 57–76</p>
+          <div class="plinks"><a href="http://dx.doi.org/10.1561/105.00000168" target="_blank" class="plink">DOI →</a></div>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">2023</span>
+        <div class="pb">
+          <h4>Fighting Gender Violence with Behavioral Public Policy: Scope and Limitations</h4>
+          <p class="venue"><em>Retos: Revista de Ciencias de la Administración y Economía</em>, 13(25), 69–83</p>
+          <div class="plinks"><a href="https://doi.org/10.17163/ret.n25.2023.05" target="_blank" class="plink">DOI →</a></div>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">2023</span>
+        <div class="pb">
+          <h4>Evidence-Based Policies, Nudge Theory and Nancy Cartwright: A Search for Causal Principles</h4>
+          <p class="venue"><em>Behavioural Public Policy</em>, 7(2), 333–352. Cambridge University Press</p>
+          <div class="plinks"><a href="https://doi.org/10.1017/bpp.2020.55" target="_blank" class="plink">DOI →</a></div>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">2022</span>
+        <div class="pb">
+          <h4>Nudges: A Promising Behavioral Public Policy Tool to Reduce Vaccine Hesitancy</h4>
+          <p class="venue"><em>Brazilian Journal of Public Policy</em>, 12(1), 80–103</p>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">2020</span>
+        <div class="pb">
+          <h4>Nudging and Educating: Bounded Axiological Rationality in Behavioral Insights</h4>
+          <p class="venue"><em>Behavioural Public Policy</em>, 4(3), 292–315. Cambridge University Press</p>
+          <div class="plinks"><a href="https://doi.org/10.1017/bpp.2019.2" target="_blank" class="plink">DOI →</a></div>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">2017</span>
+        <div class="pb">
+          <h4>Empiricism in Herbert Simon: Administrative Behavior within the Evolution of the Models of Bounded and Procedural Rationality</h4>
+          <p class="venue"><em>Brazilian Journal of Political Economy</em>, 37(4), 719–733</p>
+          <div class="plinks"><a href="https://doi.org/10.1590/0101-31572017v37n04a07" target="_blank" class="plink">DOI →</a></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pp" id="tab-chapters">
+    <ul class="pl">
+      <li class="pi">
+        <span class="py">2026</span>
+        <div class="pb">
+          <h4>Behavioral Economics and Public Policy: Ethical–Epistemological Considerations</h4>
+          <p class="venue">In <em>Introduction to Behavioral Economics: Theoretical and Methodological Foundations and Applications in Public Policy</em>. UNAM [Forthcoming]</p>
+          <span class="badge bb">Forthcoming</span>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">2025</span>
+        <div class="pb">
+          <h4>Prevenir la corrupción y fomentar una gestión económica ética: aplicaciones conductuales</h4>
+          <p class="venue">In <em>Lecciones de la Economía de la Conducta</em>. School of Economists of Madrid (CEMAD)</p>
+          <div class="plinks"><a href="https://www.cemad.es/wp-content/uploads/2025/EBOOK-Lecciones-de-Economia-de-la-Conducta.pdf" target="_blank" class="plink">Full Text →</a></div>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">2024</span>
+        <div class="pb">
+          <h4>Economía del Comportamiento y Políticas Públicas: Nudges, Autonomía y Responsabilidad Individual (pp. 157–194)</h4>
+          <p class="venue">In <em>Filosofía de la Economía: Una Introducción a Problemas Metodológicos, de Racionalidad y Éticos</em>. UNAM Instituto de Investigaciones Filosóficas. ISBN 9786073088503</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pp" id="tab-other">
+    <ul class="pl">
+      <li class="pi">
+        <span class="py">2026</span>
+        <div class="pb">
+          <h4>The 'Rationality Wars' in BPP: Why They Persist and How to Move Beyond Them</h4>
+          <p class="venue"><em>Behavioral Public Policy Blog</em>, January 2026</p>
+          <div class="plinks"><a href="https://bppblog.com/2026/01/21/rationality-wars-why-and-move-beyond/" target="_blank" class="plink">Read →</a></div>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">2026</span>
+        <div class="pb">
+          <h4>Por qué perdura la corrupción: vigilar y castigar no basta</h4>
+          <p class="venue"><em>The Conversation</em>, February 11, 2026</p>
+          <div class="plinks"><a href="https://doi.org/10.64628/AAO.aekwyndhp" target="_blank" class="plink">Read →</a></div>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">2026</span>
+        <div class="pb">
+          <h4>Irrational decision or helpful evolutionary adaptation? A philosopher on the rationality wars behind 'nudge' policy</h4>
+          <p class="venue"><em>The Conversation</em>, March 24, 2026</p>
+          <div class="plinks"><a href="https://doi.org/10.64628/AAI.phpe7fxmk" target="_blank" class="plink">Read →</a></div>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">2020</span>
+        <div class="pb">
+          <h4>Breathing Life into Vaccination</h4>
+          <p class="venue"><em>Behavioral Public Policy Blog</em>, March 2020</p>
+          <div class="plinks"><a href="https://bppblog.com/2020/03/18/breathing-life-into-vaccination/" target="_blank" class="plink">Read →</a></div>
+        </div>
+      </li>
+    </ul>
+  </div>
+
+  <div class="pp" id="tab-review">
+    <ul class="pl">
+      <li class="pi">
+        <span class="py">R&amp;R</span>
+        <div class="pb">
+          <h4>Virtue, Duty, and Well-Being: Ethical Frameworks for Personalizing Behavioral Public Policy (with Dr. Stefano Calboli, Sant'Anna School of Advanced Studies)</h4>
+          <p class="venue">Revise &amp; Resubmit — <em>Behavioural Public Policy</em>, Cambridge University Press</p>
+          <span class="badge bg">Revise &amp; Resubmit</span>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">R&amp;R</span>
+        <div class="pb">
+          <h4>Why Deaths of Despair Are Tied to Hopelessness, How Behavioral Interventions Can Help, and What to Say About Autonomy</h4>
+          <p class="venue">Revise &amp; Resubmit — <em>Public Health Ethics</em>, Oxford University Press</p>
+          <span class="badge bg">Revise &amp; Resubmit</span>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">R&amp;R</span>
+        <div class="pb">
+          <h4>Propuesta de Aplicaciones Conductuales en Políticas Públicas contra la Corrupción (with Armenio Pérez Martínez, Universidad de Guayaquil)</h4>
+          <p class="venue">Revise &amp; Resubmit — <em>Revista Gestión y Política Pública</em></p>
+          <span class="badge bg">Revise &amp; Resubmit</span>
+        </div>
+      </li>
+      <li class="pi">
+        <span class="py">Submitted</span>
+        <div class="pb">
+          <h4>Beyond Deaths of Despair (with Dr. Jack Kwong, Appalachian State University)</h4>
+          <p class="venue">Submitted — <em>Journal of Social Philosophy</em></p>
+          <span class="badge bb">Under Review</span>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<!-- TALKS -->
+<div class="sw-dark" id="talks">
+  <div class="sw-i">
+    <p class="sl">Presentations</p>
+    <h2>Talks, Keynotes &amp; <em>Invited Lectures</em></h2>
+    <div class="tl">
+      <div>
+        <div class="tg">
+          <h3>Keynote Addresses</h3>
+          <div class="ti"><p class="td">2024</p><p class="tt">Keynote Address</p><p class="tv">Behavioral Economics Scientific Society of Spain (Sociedad Científica de Economía de la Conducta)</p></div>
+          <div class="ti"><p class="td">2022</p><p class="tt">Los nuevos escenarios de las ciencias del comportamiento: racionalidad, educación, y pequeños empujones en políticas públicas</p><p class="tv">INPIN 2022 Scientific Conference, Vicente Rocafuerte Secular University, Ecuador</p></div>
+          <div class="ti"><p class="td">2019</p><p class="tt">Beyond Nudges: Behavioral Insights and a Value-Related Education</p><p class="tv">Prague Conference on Behavioral Sciences — at the Allais Memorial Prize Presentation to Dr. Gerd Gigerenzer. Center for Behavioral Experiments, Prague</p></div>
+        </div>
+
+        <div class="tg" style="margin-top:32px">
+          <h3>Invited Talks</h3>
+          <div class="ti"><p class="td">May 2026</p><p class="tt">Seminario de Economía de la Conducta</p><p class="tv">Facultad de Economía, UAM, México</p></div>
+          <div class="ti"><p class="td">May 2025</p><p class="tt">Seminario de Economía de la Conducta</p><p class="tv">Facultad de Economía, UNAM, México</p></div>
+          <div class="ti"><p class="td">May 2024</p><p class="tt">Exploring the Ethical Dimensions of Behavioral Public Policy</p><p class="tv">University of Braga, Portugal</p></div>
+          <div class="ti"><p class="td">April 2024</p><p class="tt">Irrationality and Immorality in Behavioral Economics and Public Policy</p><p class="tv">1st Philosophy, Politics, and Economics Workshop, CIDE, Mexico</p></div>
+          <div class="ti"><p class="td">April 2024</p><p class="tt">Irrationality and Immorality in Behavioral Economics and Public Policy</p><p class="tv">Prague Conference on Behavioral Sciences, UNYP</p></div>
+          <div class="ti"><p class="td">April 2024</p><p class="tt">Irrationality and Immorality in Behavioral Economics and Public Policy</p><p class="tv">UNAM Behavioral Sciences Seminar, Economics Department</p></div>
+          <div class="ti"><p class="td">May 2023</p><p class="tt">Choice Architecture, Virtues, and Well-Being: Exploring the Power of Nudges and Sludges</p><p class="tv">Psychology and Sociology Departments, Complutense University of Madrid</p></div>
+          <div class="ti"><p class="td">March 2023</p><p class="tt">Invited Talk</p><p class="tv">Universidad Nacional Autónoma de México</p></div>
+          <div class="ti"><p class="td">October 2022</p><p class="tt">Aristotelian Nudges: Using Choice Architecture to Form Virtuous Citizens</p><p class="tv">Department of Philosophy, Wake Forest University</p></div>
+          <div class="ti"><p class="td">June 2022</p><p class="tt">Aristotelian Nudges: Using Choice Architecture to Form Virtuous Citizens</p><p class="tv">Philosophy of Economics Seminar, UNAM</p></div>
+          <div class="ti"><p class="td">October 2021</p><p class="tt">A Behavioral Approach to Public Policy Interventions in Vaccine Hesitancy</p><p class="tv">Dept. of Logic, History and Philosophy of Science, UNED, Spain</p></div>
+          <div class="ti"><p class="td">October 2021</p><p class="tt">New Approaches in Behavioral Public Policy</p><p class="tv">Psychology and Sociology Dept., Complutense University of Madrid</p></div>
+          <div class="ti"><p class="td">May 2021</p><p class="tt">Behavioral Public Policy: Nudges, Budges, and Shoves</p><p class="tv">Psychology and Sociology Dept., Complutense University of Madrid</p></div>
+          <div class="ti"><p class="td">April 2021</p><p class="tt">Nudging and Educating in Behavioral Public Policy</p><p class="tv">Department of Philosophy, UNAM</p></div>
+          <div class="ti"><p class="td">June 2020</p><p class="tt">Nudges vs. Boosts in Behavioral Public Policy</p><p class="tv">Grupo de Estudos em Economia Comportamental, São Paulo, Brazil</p></div>
+          <div class="ti"><p class="td">March 2020</p><p class="tt">Behavioral Economics and Public Policy: Nudges, Autonomy, and Moral Responsibility</p><p class="tv">Center for Complexity Sciences, UNAM</p></div>
+          <div class="ti"><p class="td">October 2019</p><p class="tt">Libertarian Paternalism, Education, and Public Policies: Gender Equality</p><p class="tv">Complutense University of Madrid</p></div>
+          <div class="ti"><p class="td">March 2019</p><p class="tt">Gender Violence, Nudges, and Austerity Policies</p><p class="tv">Complutense University of Madrid</p></div>
+          <div class="ti"><p class="td">2018</p><p class="tt">Gender Violence, Policy Making, and Libertarian Paternalism</p><p class="tv">Complutense University of Madrid</p></div>
+          <div class="ti"><p class="td">2016</p><p class="tt">Nudge Theory, Head Start, Poverty, and Social Services in the United States</p><p class="tv">Complutense University of Madrid</p></div>
+          <div class="ti"><p class="td">2016</p><p class="tt">Herbert Simon, Origin and Criticism of Nudge Theory</p><p class="tv">Department of Philosophy, UNED, Madrid</p></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="tg">
+          <h3>Refereed Conference Papers</h3>
+          <div class="ti"><p class="td">June 2026</p><p class="tt">Intention–Behavior Mismatches in Central and Eastern Europe: A Phronetic Reassessment of Rationality</p><p class="tv">International BPP Workshop, GIPA Georgian Institute of Public Affairs, Tbilisi</p></div>
+          <div class="ti"><p class="td">May 2026</p><p class="tt">From Bias Correction to Human Flourishing: A Phronetic Framework for BPP</p><p class="tv">Prague Conference on Behavioral Sciences, UNYP</p></div>
+          <div class="ti"><p class="td">April 2026</p><p class="tt">An Aristotelian Framework for BPP: Cultivating Civic Flourishing Through Non-Coercive Interventions</p><p class="tv">International BPP Workshop, University of New York</p></div>
+          <div class="ti"><p class="td">November 2025</p><p class="tt">A Normative Compass: Virtues, Duties, and Happy Outcomes in BPP</p><p class="tv">Philosophy, Politics, and Economics Society Annual Conference</p></div>
+          <div class="ti"><p class="td">September 2025</p><p class="tt">Ethical Frameworks for Personalized BPP: What If Aristotle, Kant, and Mill Were Choice Architects?</p><p class="tv">IBPPA Conference, King's College London</p></div>
+          <div class="ti"><p class="td">June 2025</p><p class="tt">Why Deaths of Despair Are Tied to Hopelessness, How Behavioral Interventions Can Help, and What to Say About Autonomy</p><p class="tv">IBPPA Workshop, London School of Economics</p></div>
+          <div class="ti"><p class="td">March 2025</p><p class="tt">Rationality Wars: Classical Foundations, Contemporary Divergences, and the Pitfalls of Reductionism</p><p class="tv">IBPPA Workshop, CIDE, Mexico &amp; North Carolina Philosophical Society</p></div>
+          <div class="ti"><p class="td">November 2024</p><p class="tt">Beyond Despair / Digital Nudges and Sludge Audits as Tools for Corruption Reduction</p><p class="tv">PPE Society Conference, New Orleans</p></div>
+          <div class="ti"><p class="td">June 2024</p><p class="tt">Mitigating Corruption in Latin America: Embracing Choice Architecture and Virtue Nudges</p><p class="tv">3rd International BPP Conference, Cambridge, UK</p></div>
+          <div class="ti"><p class="td">June 2024</p><p class="tt">External Practical Cognition and the Potential of Digital Nudges: Habituation, Virtues, and Technology</p><p class="tv">Braga Meetings on Ethics and Political Philosophy, Portugal</p></div>
+          <div class="ti"><p class="td">April 2024</p><p class="tt">Exploring the Ethical Dimensions of Behavioral Public Policy</p><p class="tv">BPP Workshop, Lee Kuan Yew School of Public Policy, Singapore</p></div>
+          <div class="ti"><p class="td">October 2023</p><p class="tt">A Normative Demarcation of Behavioral Interventions: Clarifying Nudging and Sludging to Enhance Well-Being</p><p class="tv">Prague Conference on Behavioral Sciences, UNYP</p></div>
+          <div class="ti"><p class="td">September 2023</p><p class="tt">Navigating the Limitations of BPP in Addressing Gender Violence</p><p class="tv">2nd IBPPA Conference, Chapel Hill, NC</p></div>
+          <div class="ti"><p class="td">March 2023</p><p class="tt">Exploring the Intersection of Virtue Nudges and Extended Cognition in Guiding Moral Decision-Making</p><p class="tv">4th International Conference on Philosophy of Mind (4E's), Catholic University of Portugal, Braga</p></div>
+          <div class="ti"><p class="td">2022</p><p class="tt">Biases and Frictions in Immunization: A Behavioral Approach to Vaccine Hesitancy</p><p class="tv">1st Annual IBPPA Conference, London School of Economics</p></div>
+          <div class="ti"><p class="td">2022</p><p class="tt">Aristotelian Nudges / Open Session</p><p class="tv">96th Joint Session of the Aristotelian Society</p></div>
+          <div class="ti"><p class="td">2022</p><p class="tt">Behavioral Public Policy and Objective Well-Being: Towards a Normative Demarcation of Nudges and Sludges</p><p class="tv">Prague Conference on Behavioral Sciences</p></div>
+          <div class="ti"><p class="td">2019</p><p class="tt">Nudges in Voting, Gender Violence, and GMOs: A Claim to Consider Expressive Rationality in Public Policies</p><p class="tv">Prague Conference on Behavioral Sciences</p></div>
+          <div class="ti"><p class="td">2019</p><p class="tt">Philosophical Approaches to Bounded Rationality: From Herbert Simon to Nudges</p><p class="tv">PPE Society Conference, New Orleans</p></div>
+          <div class="ti"><p class="td">2018</p><p class="tt">Nudging and Educating: Bounded Axiological Rationality in Behavioral Insights</p><p class="tv">Prague Conference on Behavioral Sciences</p></div>
+          <div class="ti"><p class="td">2017</p><p class="tt">Herbert Simon: Origin and Criticism of Nudge Theory</p><p class="tv">Spanish Society of Logic, Methodology, and Philosophy of Science</p></div>
+          <div class="ti"><p class="td">2012</p><p class="tt">Bounded Axiological Rationality, Dynamic Inconsistency, and the 2012 Republican Presidential Nomination</p><p class="tv">UNED University, Madrid</p></div>
+          <div class="ti"><p class="td">2011</p><p class="tt">Models of Rationality and the Objectivity of Science</p><p class="tv">Philosophy Works in Progress Series, Appalachian State University</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- TEACHING -->
+<div class="sw" id="teaching">
+  <p class="sl">Teaching</p>
+  <h2>18+ Years of University Teaching <em>across six institutions</em></h2>
+
+  <div class="teach-inst">
+    <h3>University of North Carolina at Greensboro</h3>
+    <p class="isub">Senior Lecturer, Dept. of Languages, Literatures &amp; Cultures · 2008–present</p>
+    <div class="cg">
+      <div class="cp">Democracy as a Culture: Shaping Communities and Civic Life</div>
+      <div class="cp">Money and Happiness: Economy, Globalization, and Justice</div>
+      <div class="cp">Ethics and Service Learning</div>
+      <div class="cp">Global Genocides in Literature and Film</div>
+      <div class="cp">Global Crossings: Culture, Behavior, and Identity</div>
+      <div class="cp">Cultural Expressions in a Material World</div>
+      <div class="cp">The World Explained by Soccer</div>
+      <div class="cp">Global Crossings: Social Conflicts in a Globalized World</div>
+      <div class="cp">Global Sixties and Revolutions</div>
+      <div class="cp">Global Green: Cultures of Production and Consumption</div>
+      <div class="cp">Evolving Environments: Global Diversity and Cultural Ecology</div>
+      <div class="cp">Hispanic Masterpieces in English Translation</div>
+      <div class="cp">Rebels and Revolutionaries in Languages, Literature, and Culture</div>
+    </div>
+  </div>
+
+  <div class="teach-inst">
+    <h3>Wake Forest University</h3>
+    <p class="isub">Visiting Assistant Professor of Philosophy · 2021–present</p>
+    <div class="cg">
+      <div class="cp">Problems of Philosophy</div>
+      <div class="cp">Logic and Argumentation</div>
+      <div class="cp">Environmental Ethics</div>
+    </div>
+  </div>
+
+  <div class="teach-inst">
+    <h3>University of New York in Prague</h3>
+    <p class="isub">Faculty &amp; Coordinator, Behavioral Public Policy Track · 2019–present</p>
+    <div class="cg">
+      <div class="cp">Behavioral Public Policy — Prague Summer School on Behavioral Sciences (Annual, July)</div>
+    </div>
+  </div>
+
+  <div class="teach-inst">
+    <h3>High Point University</h3>
+    <p class="isub">Part-Time Lecturer, Dept. of Philosophy · 2015–2021</p>
+    <div class="cg">
+      <div class="cp">Business Ethics</div>
+      <div class="cp">Social Ethics</div>
+    </div>
+  </div>
+
+  <div class="teach-inst">
+    <h3>Appalachian State University</h3>
+    <p class="isub">Part-Time Lecturer, Dept. of Philosophy · 2005–2015</p>
+    <div class="cg">
+      <div class="cp">Environmental Ethics</div>
+      <div class="cp">Introduction to Philosophy</div>
+      <div class="cp">Philosophy of Diversity: From Local to Global</div>
+      <div class="cp">Aesthetics: How We Tell Stories</div>
+      <div class="cp">Everyday Philosophy: Historical and Sociological Perspective</div>
+    </div>
+  </div>
+
+  <div class="teach-inst">
+    <h3>Forsyth Technical Community College</h3>
+    <p class="isub">Part-Time Instructor · 2011–2013</p>
+    <div class="cg">
+      <div class="cp">Introduction to Ethics</div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICE -->
+<div class="sw-dark" id="service">
+  <div class="sw-i">
+    <p class="sl">Service to the Discipline</p>
+    <h2>Editorial, Advisory &amp; <em>Supervisory Roles</em></h2>
+    <div class="sg">
+      <div class="sb">
+        <h3>Editorial &amp; Advisory</h3>
+        <div class="si"><strong>Guest Editor</strong> — Behavioural Public Policy (Cambridge), Special Issue: 1st IBPPA Conference</div>
+        <div class="si"><strong>International Advisory Board</strong> — International Behavioral Public Policy Association</div>
+        <div class="si"><strong>Board of Directors</strong> — Asociación Científica de la Economía de la Conducta (Spain &amp; Latin America)</div>
+        <div class="si"><strong>Expert Consultant</strong> — GlaxoSmithKline, global vaccine confidence panel (March 2020–March 2021)</div>
+      </div>
+      <div class="sb">
+        <h3>Doctoral Supervision &amp; Hosting</h3>
+        <div class="si"><strong>Isidro Lapuente</strong> — PhD Co-Advisor. Human Development, Capacities &amp; Digital Environments. UNED, Spain</div>
+        <div class="si"><strong>Luca Lancini</strong> — PhD Co-Advisor. Rationality and Sustainability. UNED, Spain</div>
+        <div class="si"><strong>PhD Tribunal (2025)</strong> — EAN University, Colombia. Milton Cuaspud: Decision Architecture in Public Policy</div>
+        <div class="si"><strong>Hosted (Fall 2025)</strong> — Dr. Sergio López Moreno (UCM) as International Researcher, UNCG</div>
+        <div class="si"><strong>Hosted (Fall 2024)</strong> — Dr. Stefano Calboli (Sant'Anna), postdoctoral research stay, UNCG</div>
+        <div class="si"><strong>Hosted (Spring 2024)</strong> — Milton Cuaspud (EAN University doctoral student), UNCG</div>
+      </div>
+      <div class="sb">
+        <h3>Peer Review</h3>
+        <div class="si">Policy and Society · Behavioural Public Policy · Journal of Medical Ethics (BMJ) · Humanities &amp; Social Sciences Communications (Nature) · Public Health Ethics · Synthese · Bioeconomics · Cambridge Journal of Economics · Women's Studies International Forum · Social Sciences &amp; Humanities Open · Revista Guillermo de Ockham · Yachana · Sociedad y Economía · Reflexión Política · Behanomics</div>
+        <div class="si" style="margin-top:12px"><strong>Conference Organization:</strong> IBPPA Mexico Workshop (Oct. 2026) · PPE Workshop, CIDE Mexico (2024 &amp; 2025) · 2nd IBPPA Conference, UNC Chapel Hill</div>
+      </div>
+    </div>
+
+    <div style="margin-top:44px">
+      <h3 style="font-family:var(--serif);font-size:1rem;font-weight:400;color:rgba(255,255,255,.5);margin-bottom:16px;border-bottom:1px solid rgba(255,255,255,.07);padding-bottom:8px">UNCG Institutional Service</h3>
+      <div class="kw-cloud" style="justify-content:flex-start">
+        <span class="kw">Faculty Senate (2024–2027)</span>
+        <span class="kw">CAS Diversity Committee (2024–2026)</span>
+        <span class="kw">Annual Faculty Review Committee</span>
+        <span class="kw">Fulbright Campus Committee</span>
+        <span class="kw">Curriculum &amp; Teaching Committee, CAS</span>
+        <span class="kw">Faculty Advisor, Student Advisory Board</span>
+        <span class="kw">Director, LLC Summer Abroad in Spain (2011–2018)</span>
+        <span class="kw">Environmental Studies Advisory Council (2014–2018)</span>
+        <span class="kw">Sustainable Development Student Club (2013–2016)</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- AWARDS -->
+<div class="sw">
+  <p class="sl">Awards &amp; Honors</p>
+  <h2>Recognition</h2>
+  <div class="aw-row">
+    <div class="aw-card">
+      <h4>🏆 Best Research Project in Behavioral Economics</h4>
+      <p>Scientific Society of Behavioral Economics — for "Behavioral Strategies for Reducing Corruption: From Regulation to Choice Architecture" (2024)</p>
+    </div>
+    <div class="aw-card">
+      <h4>📊 Altmetric 204 · Top 5% of all research</h4>
+      <p>Ranked #10 of 330 articles in the history of <em>Behavioural Public Policy</em> (Cambridge) for "Rationality Wars" (2025)</p>
+    </div>
+    <div class="aw-card">
+      <h4>Phi Beta Delta International Scholars Honor Society</h4>
+      <p>Inducted 2018</p>
+    </div>
+    <div class="aw-card">
+      <h4>National Society of Collegiate Scholars</h4>
+      <p>Inducted 2019</p>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- CONTACT -->
+<div class="sw" id="contact">
+  <p class="sl">Contact</p>
+  <h2>Get in <em>Touch</em></h2>
+  <div class="contact-grid">
+    <div class="contact-intro">
+      <p>I welcome inquiries regarding research collaboration, speaking invitations, editorial partnerships, doctoral supervision, and visiting researcher arrangements. I am particularly interested in connecting with scholars working on behavioral governance, practical ethics, and the philosophical foundations of public policy.</p>
+      <a href="mailto:alexhortal@gmail.com" class="btn btn-dark" style="display:inline-block;margin-top:8px">Send Email</a>
+    </div>
+    <ul class="cl">
+      <li><span class="clabel">Email</span><a href="mailto:alexhortal@gmail.com">alexhortal@gmail.com</a></li>
+      <li><span class="clabel">ORCID</span><a href="https://orcid.org/0000-0001-6255-4488" target="_blank">0000-0001-6255-4488</a></li>
+      <li><span class="clabel">UNCG</span><a href="https://uncg.edu" target="_blank">Dept. Languages, Literatures &amp; Cultures</a></li>
+      <li><span class="clabel">Wake Forest</span><a href="https://wfu.edu" target="_blank">Dept. of Philosophy</a></li>
+      <li><span class="clabel">BPP Blog</span><a href="https://bppblog.com" target="_blank">bppblog.com</a></li>
+      <li><span class="clabel">IBPPA</span><a href="#" target="_blank">International Advisory Board</a></li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <p>Alejandro Hortal, PhD &nbsp;·&nbsp; Political Philosophy &amp; Behavioral Public Policy &nbsp;·&nbsp; UNC Greensboro &amp; Wake Forest University</p>
+</footer>
+
+<script>
+function switchTab(name, el) {
+  document.querySelectorAll('.pt').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.pp').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('tab-' + name).classList.add('active');
+}
+</script>
+</body>
+</html>
